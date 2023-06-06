@@ -1,9 +1,13 @@
 import React from 'react';
+import NavBar from '../../Shared/NavBar/NavBar';
+import Footer from '../../Shared/Footer/Footer';
 
 const Home = () => {
     return (
         <div>
-            <h2>This is a Home page</h2>
+            <NavBar></NavBar>
+            <h1 className='text-white'>Home</h1>
+            <Footer></Footer>
         </div>
     );
 };
