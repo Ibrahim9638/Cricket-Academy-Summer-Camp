@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.jpg";
+import useAuth from "../../../Hooks/useAuth";
 
 const NavBar = () => {
+  const {user} = useAuth();
+
   const navItems = (
     <>
       <li>
@@ -29,7 +32,10 @@ const NavBar = () => {
           Classes
         </Link>
       </li>
-      <li>
+      {
+        user? 
+        <>
+          <li>
         <Link
           to="/instructor"
           className="text-lg font-bold"
@@ -37,12 +43,23 @@ const NavBar = () => {
         >
           Dashboard
         </Link>
+        <img style={{width:'50px', height:'50px', borderRadius:'50%'}}
+          src={user?.photoURL} alt="" title={user?.displayName} />
       </li>
+        </>:
+        <>
+        <li>
+          <Link to='/login' 
+          className="text-lg font-bold"
+          style={{ textShadow: "2px 2px 4px #000000" }}>Login</Link>
+        </li>
+        </>
+      }
     </>
   );
   return (
     
-    <div className="navbar  bg-black z-10 bg-opacity-40  h-36  fixed text-white max-w-screen-2xl p-6">
+    <div className="navbar  bg-black z-10 bg-opacity-30  h-36  fixed text-white max-w-screen-2xl p-6">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
