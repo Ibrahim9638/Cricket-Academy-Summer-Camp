@@ -2,8 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import logo from "../../assets/Login/login.jpg";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        console.log(data);
+    };
   return (
     <div className="hero min-h-screen bg-[#ecf4fb]">
       <div className="hero-content flex-col lg:flex-row gap-16">
@@ -11,7 +16,7 @@ const Login = () => {
           <img className="rounded  h-[420px]" src={logo} alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <h1 className="text-center text-xl font-bold">Please Login</h1>
             <div className="form-control">
               <label className="label">
@@ -19,7 +24,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                name="email"
+                {...register("email")}
                 placeholder="Email"
                 className="input input-bordered"
               />
@@ -30,7 +35,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                name="password"
+                {...register("password")}
                 placeholder="Password"
                 className="input input-bordered"
               />
