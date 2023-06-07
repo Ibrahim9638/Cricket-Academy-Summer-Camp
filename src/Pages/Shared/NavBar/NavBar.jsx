@@ -90,7 +90,7 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn border-0 bg-black btn-lg text-white" style={{ textShadow: "2px 2px 4px #000000" }}>Sports</a>
       </div>
     </div>
   );
