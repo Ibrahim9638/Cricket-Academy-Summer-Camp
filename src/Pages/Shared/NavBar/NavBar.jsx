@@ -4,7 +4,14 @@ import logo from "../../../assets/logo.jpg";
 import useAuth from "../../../Hooks/useAuth";
 
 const NavBar = () => {
-  const {user} = useAuth();
+  const {user, logOut} = useAuth();
+
+  const handleLogOut =()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error =>console.log(error))
+
+  }
 
   const navItems = (
     <>
@@ -32,29 +39,35 @@ const NavBar = () => {
           Classes
         </Link>
       </li>
-      {
-        user? 
-        <>
-          <li>
-        <Link
-          to="/instructor"
-          className="text-lg font-bold"
-          style={{ textShadow: "2px 2px 4px #000000" }}
-        >
-          Dashboard
-        </Link>
-        <img style={{width:'50px', height:'50px', borderRadius:'50%'}}
-          src={user?.photoURL} alt="" title={user?.displayName} />
-      </li>
-        </>:
-        <>
+       {
+        user ? 
+        <>   
+         <li>
+          <Link to="/dashboard" className="text-lg font-bold" 
+          style={{ textShadow: "2px 2px 4px #000000" }}>
+            Dashboard
+          </Link>
+         </li>
+       
         <li>
-          <Link to='/login' 
-          className="text-lg font-bold"
-          style={{ textShadow: "2px 2px 4px #000000" }}>Login</Link>
+          <img style={{width:'55px', height:'55px', borderRadius:'50%'}}
+            src={user?.photoURL} alt="" title={user?.displayName} />
+        </li>
+        <li>
+          <p onClick={handleLogOut}  className="text-lg font-bold"
+            style={{ textShadow: "2px 2px 4px #000000" }}>Logout</p>
+        </li>
+         
+        </> : 
+        <>
+         <li>
+          <Link to='/login' className="text-lg font-bold"
+          style={{ textShadow: "2px 2px 4px #000000" }}>Login
+          </Link>
         </li>
         </>
-      }
+       }
+    
     </>
   );
   return (

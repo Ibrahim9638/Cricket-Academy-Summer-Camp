@@ -1,13 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import logo from "../../assets/Login/login.jpg";
 import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {signIn} = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
     const onSubmit = data => {
-        console.log(data);
+        signIn(data.email, data.password)
+        .then(result=>{
+          const user = result.user;
+          console.log(user);
+          Swal.fire({
+            title: 'User Login Successfully',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+          navigate(from, { replace: true });
+        })
+         .catch(error =>{
+          console.log(error);
+         })
     };
   return (
     <div className="hero min-h-screen bg-[#ecf4fb]">
