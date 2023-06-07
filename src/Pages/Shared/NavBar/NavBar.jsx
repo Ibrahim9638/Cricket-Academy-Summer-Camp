@@ -41,7 +41,8 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="navbar fixed z-10 px-8 h-32 bg-black text-white max-w-screen-2xl">
+    
+    <div className="navbar  bg-black z-10 bg-opacity-40  h-36  fixed text-white max-w-screen-2xl p-6">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -67,20 +68,22 @@ const NavBar = () => {
             {navItems}
           </ul>
         </div>
-        <div className="flex">
-          <img className="m-0"
+        <div className="flex justify-center items-center">
+        <div className="w-12 rounded-full">
+        <img 
             style={{ width: "70px", height: "70px", borderRadius: "50%" }}
             src={logo}
             alt=""
           />
-          <li>
-            {" "}
-            <a className="btn btn-ghost normal-case text-xl">
-              Ibrahim <br />
-              Cricket <br />
+        </div>
+         <div className="mt-[-40px] lg:m-0 md:m-0 ">
+         <Link to='/'>
+            <p className="btn btn-ghost normal-case lg:mr-[-400px] lg:mb-[20px] lg:text-2xl text-lg  " style={{ textShadow: "2px 2px 4px #000000" }}>
+              Roy Cricket <br />
               Academy
-            </a>
-          </li>
+            </p>
+          </Link>
+         </div>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
