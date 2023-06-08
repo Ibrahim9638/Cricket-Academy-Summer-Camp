@@ -1,39 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import logo from "../../assets/Login/login.jpg";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { BsFillEyeFill } from "react-icons/Bs";
 
 const Login = () => {
-    const {signIn} = useAuth();
-    const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+  const [show, setShow] = useState(false);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-    const onSubmit = data => {
-        signIn(data.email, data.password)
-        .then(result=>{
-          const user = result.user;
-          console.log(user);
-          Swal.fire({
-            title: 'User Login Successfully',
-            showClass: {
-              popup: 'animate__animated animate__fadeInDown'
-            },
-            hideClass: {
-              popup: 'animate__animated animate__fadeOutUp'
-            }
-          })
-          navigate(from, { replace: true });
-        })
-         .catch(error =>{
-          console.log(error);
-         })
-    };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    signIn(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          title: "User Login Successfully",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="hero min-h-screen bg-[#ecf4fb]">
       <div className="hero-content flex-col lg:flex-row gap-16">
@@ -59,11 +66,24 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? 'text' : 'password'}
                 {...register("password")}
                 placeholder="Password"
                 className="input input-bordered"
               />
+              <p className='text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]' onClick={() => setShow(!show)}>
+                <small>
+                  {show ? (
+                    <span>
+                      <BsFillEyeFill></BsFillEyeFill>
+                    </span>
+                  ) : (
+                    <span>
+                      <BsFillEyeFill />
+                    </span>
+                  )}
+                </small>
+              </p>
             </div>
 
             <div className="form-control mt-6">

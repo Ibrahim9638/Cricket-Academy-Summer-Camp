@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/Login/login.jpg";
 import SocialLogin from "../../SocialLogin/SocialLogin";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { BsFillEyeFill } from "react-icons/Bs";
+
 
 const Register = () => {
-  const {register,handleSubmit,formState: { errors },reset,} = useForm();
-  
+  const {register,handleSubmit,formState: { errors }, reset} = useForm();
+  const navigate = useNavigate();
+  const [show, setShow]= useState(false);
+  const [confirmShow, setConfirmShow]= useState(false);
 
   const { createUser, updateUserProfile } = useAuth();
   const onSubmit = (data) => {
@@ -17,7 +21,15 @@ const Register = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         updateUserProfile(data.name, data.photo)
-          .then(() => {})
+          .then(() => {
+            reset();
+            Swal.fire(
+                'User Create Successfully',
+                'Welcome To Home Page',
+                'success'
+              )
+              navigate('/');
+          })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
@@ -84,7 +96,7 @@ const Register = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={show ? 'text': 'password'}
                   placeholder="Password"
                   {...register("password", {
                     required: true,
@@ -93,6 +105,19 @@ const Register = () => {
                   })}
                   className="input input-bordered"
                 />
+                <p className="text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]" onClick={()=>setShow(!show)}>
+                  <small>
+                    {
+                      show ? 
+                      <span>
+                      <BsFillEyeFill></BsFillEyeFill>
+                      </span>:
+                       <span>
+                        <BsFillEyeFill></BsFillEyeFill>
+                       </span>
+                    }
+                  </small>
+                </p>
                 {errors.password?.type === "required" && (
                   <span className="text-red-600">
                     Password field is required
@@ -113,7 +138,7 @@ const Register = () => {
                   <span className="label-text">Confirm Password</span>
                 </label>
                 <input
-                  type="password"
+                  type= {confirmShow ? 'text' : 'password'}
                   placeholder="Confirm Password"
                   {...register("CPassword", {
                     required: true,
@@ -122,6 +147,19 @@ const Register = () => {
                   })}
                   className="input input-bordered"
                 />
+                      <p className="text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]" onClick={()=>setConfirmShow(!confirmShow)}>
+                  <small>
+                    {
+                      show ? 
+                      <span>
+                      <BsFillEyeFill></BsFillEyeFill>
+                      </span>:
+                       <span>
+                        <BsFillEyeFill></BsFillEyeFill>
+                       </span>
+                    }
+                  </small>
+                </p>
                 {errors.CPassword?.type === "required" && (
                   <span className="text-red-600">
                     Confirm Password field is required
