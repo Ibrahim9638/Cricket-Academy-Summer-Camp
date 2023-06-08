@@ -6,9 +6,11 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { BsFillEyeFill } from "react-icons/Bs";
+import useTitle from "../../Hooks/useTitle";
 
 const Login = () => {
   const [show, setShow] = useState(false);
+  useTitle('Login')
 
   const { signIn } = useAuth();
   const navigate = useNavigate();

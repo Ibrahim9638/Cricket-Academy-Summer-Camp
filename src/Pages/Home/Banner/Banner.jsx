@@ -14,19 +14,19 @@ const Banner = () => {
         <Carousel>
         <div>
             <img src={slide1} />
-            <p className="legend" style={{fontSize: "19px"}}> <marquee>The Most Popular Sports in the world is Cricket. We try to teach newbies with our best coaches.</marquee>  </p>
+            <p className="legend" style={{fontSize: "19px"}}> <marquee>The Most Popular Sports in the world is Cricket. We try to teach newbies with our best coaches. If You are interested, Go to our classes & see all the classes</marquee>  </p>
         </div>
         <div>
             <img src={slide2} />
-            <p className="legend" style={{fontSize: "19px"}}> <marquee> Batting is one of the three main functions of a cricket team. We try to teach newbies with our best coaches.</marquee>  </p>
+            <p className="legend text-5xl" style={{fontSize: "30px"}}> Batting Course fees: 10000/- Taka Only <br /> Check out our classes sections for details</p>
         </div>
         <div>
             <img src={slide3} />
-            <p className="legend" style={{fontSize: "19px"}}> <marquee> Bowling is directing the ball towards the batsmen and the stumps which are covered. We try to teach newbies with our best coaches.</marquee>  </p>
+            <p className="legend" style={{fontSize: "30px"}}> Bowling Course fees: 9500/- Taka Only <br /> Check out our classes sections for details</p>
         </div>
         <div>
             <img src={slide4} />
-            <p className="legend" style={{fontSize: "19px"}}> <marquee>The modern game demands that fielders have excellent ground fielding skills. We try to teach newbies with our best coaches.</marquee>  </p>
+            <p className="legend" style={{fontSize: "30px"}}> Fielding Course fees: 6500/- Taka Only <br /> Check out our classes sections for details. </p>
         </div>
     </Carousel>
         

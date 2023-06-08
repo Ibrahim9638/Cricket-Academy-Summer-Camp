@@ -23,7 +23,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/instructor"
+          to="/instructors"
           className="text-lg font-bold"
           style={{ textShadow: "2px 2px 4px #000000" }}
         >
@@ -32,7 +32,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/instructor"
+          to="/classes"
           className="text-lg font-bold"
           style={{ textShadow: "2px 2px 4px #000000" }}
         >

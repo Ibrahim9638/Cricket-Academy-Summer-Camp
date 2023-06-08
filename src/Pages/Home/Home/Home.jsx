@@ -1,14 +1,16 @@
 import React from 'react';
-import NavBar from '../../Shared/NavBar/NavBar';
-import Footer from '../../Shared/Footer/Footer';
+
 import Banner from '../Banner/Banner';
+import PopularClass from '../../PopularClass/PopularClass';
+import useTitle from '../../../Hooks/useTitle';
 
 
 const Home = () => {
+    useTitle('Home');
     return (
         <div>
-            
             <Banner></Banner>
+            <PopularClass></PopularClass>
             
         </div>
     )
