@@ -10,6 +10,7 @@ import Dashboard from "../Layout/Dashboard";
 import Instructor from "../Dashboard/Instructor/Instructor";
 import PopularInstructor from "../Pages/PopularInstructor/PopularInstructor.jsx";
 import AllUsers from "../Dashboard/AllUsers/AllUsers";
+import ManageUsers from "../Dashboard/Admin/ManageUsers";
 
 
 
@@ -54,6 +55,11 @@ export const router = createBrowserRouter([
         {
           path: 'allUsers',
           element:<AllUsers></AllUsers>
+        }
+        ,
+        {
+          path:"/dashboard/admin/manage-users",
+          element:<ManageUsers/>
         }
       ]
     }
