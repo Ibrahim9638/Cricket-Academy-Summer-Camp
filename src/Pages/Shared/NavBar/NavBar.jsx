@@ -99,7 +99,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="flex justify-center items-center">
-        <div className="w-12 rounded-full">
+        <div className="w-12">
         <img 
             style={{ width: "70px", height: "70px", borderRadius: "50%" }}
             src={logo}
