@@ -6,7 +6,7 @@ import { AiFillInstagram } from 'react-icons/Ai';
 const Footer = () => {
     return (
         <div>
-        <footer className="footer p-10 bg-[#ecf4fb] text-black text-lg" style={{ textShadow: "2px 2px 10px #000000" }}>
+        <footer className="footer p-10 bg-[#92c6f3] bg-opacity-40 text-black text-lg" style={{ textShadow: "2px 2px 10px #000000" }}>
           <div>
           <img style={{ width: "70px", height: "70px", borderRadius: "50%" }} src={logo} alt="" />
             <p className='text-md font-semibold'>
@@ -82,7 +82,7 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center p-4 bg-[#ecf4fb] text-black">
+        <footer className="footer footer-center p-4 bg-[#92c6f3] bg-opacity-40 text-black">
           <div>
             <p className='font-bold' style={{ textShadow: "2px 2px 10px #000000" }}>Copyright © 2023 - All right reserved by Roy Cricket Academy</p>
           </div>

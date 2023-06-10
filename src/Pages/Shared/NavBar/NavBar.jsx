@@ -6,6 +6,7 @@ import useAuth from "../../../Hooks/useAuth";
 const NavBar = () => {
   const {user, logOut} = useAuth();
 
+
   const handleLogOut =()=>{
     logOut()
     .then(()=>{})
@@ -23,7 +24,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/instructors"
+          to="/popular-instructor"
           className="text-lg font-bold"
           style={{ textShadow: "2px 2px 4px #000000" }}
         >

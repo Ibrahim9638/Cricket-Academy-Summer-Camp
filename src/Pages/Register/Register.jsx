@@ -13,22 +13,44 @@ const Register = () => {
   const navigate = useNavigate();
   const [show, setShow]= useState(false);
   const [confirmShow, setConfirmShow]= useState(false);
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const { createUser, updateUserProfile } = useAuth();
   const onSubmit = (data) => {
-    createUser(data.email, data.password, data.CPassword)
+    createUser(data.email, data.password, data.confirmPassword)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+
         updateUserProfile(data.name, data.photo)
           .then(() => {
-            reset();
-            Swal.fire(
-                'User Create Successfully',
-                'Welcome To Home Page',
-                'success'
-              )
+
+            if(data.password !== data.confirmPassword){
+              alert("Password does not match");
+              return;
+            }
+            const saveUser = {name:data.name, email:data.email, photoUrl:data.photo, password:data.password}
+            fetch('http://localhost:5000/users',{
+              method: 'POST',
+              headers: {
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify(saveUser)
+            })
+            .then(res => res.json())
+            .then(data =>{
+              if(data.insertedId){
+                reset();
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'User updated successfully',
+                showConfirmButton: false,
+                timer: 2500
+              })
               navigate('/');
+              }
+            })
+
           })
           .catch((err) => console.log(err));
       })
@@ -140,11 +162,12 @@ const Register = () => {
                 <input
                   type= {confirmShow ? 'text' : 'password'}
                   placeholder="Confirm Password"
-                  {...register("CPassword", {
+                  {...register("confirmPassword", {
                     required: true,
                     minLength: 6,
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
+                  onChange={(e) =>setConfirmPassword(e.target.value)}
                   className="input input-bordered"
                 />
                       <p className="text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]" onClick={()=>setConfirmShow(!confirmShow)}>
@@ -160,15 +183,15 @@ const Register = () => {
                     }
                   </small>
                 </p>
-                {errors.CPassword?.type === "required" && (
+                {errors.confirmPassword?.type === "required" && (
                   <span className="text-red-600">
                     Confirm Password field is required
                   </span>
                 )}
-                {errors.CPassword?.type === "minLength" && (
+                {errors.confirmPassword?.type === "minLength" && (
                   <p className="text-red-600">Password at least 6 character</p>
                 )}
-                {errors.CPassword?.type === "pattern" && (
+                {errors.confirmPassword?.type === "pattern" && (
                   <p className="text-red-600">
                     Password at least One Uppercase and One lowercase and One
                     number and One special character
