@@ -8,8 +8,8 @@ import { MdClass } from 'react-icons/Md';
 import { SiGoogleclassroom } from 'react-icons/Si';
 
 const Dashboard = () => {
-  const isAdmin = true;
-  const isInstructor = false;
+  const isAdmin = false;
+  const isInstructor = true;
 
     return (
       <div className="drawer lg:drawer-open ">
