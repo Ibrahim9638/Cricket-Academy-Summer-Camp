@@ -53,6 +53,36 @@ const ManageUsers = () => {
           })
     }
 
+    const handleDelete = user => {
+      Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`http://localhost:5000/users/${user.email}`,{
+              method: "DELETE"
+            })
+            .then(res => res.json())
+            .then(data =>{
+              if(data.deletedCount > 0){
+                  refetch();
+                  Swal.fire(
+                      'Deleted!',
+                      'Your file has been deleted.',
+                      'success'
+                    )
+              } 
+            })
+  
+          }
+        })
+    };
+
   return (
    <div className="w-full">
      <div className="overflow-x-auto">
@@ -99,7 +129,7 @@ const ManageUsers = () => {
                 </td>
                 <td>
                 <button
-                    onClick={() => handleUser(user)}
+                    onClick={() => handleDelete(user)}
                     className=" btn-ghost btn-sm rounded-md bg-red-600 text-white text-xl"
                   >
                     {" "}
