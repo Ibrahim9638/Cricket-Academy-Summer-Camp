@@ -9,8 +9,8 @@ import { SiGoogleclassroom } from 'react-icons/Si';
 
 
 const Dashboard = () => {
-  const isAdmin = false;
-  const isInstructor = true;
+  const isAdmin = true;
+  const isInstructor = false;
 
     return (
       <div className="drawer lg:drawer-open ">
@@ -30,7 +30,7 @@ const Dashboard = () => {
           isAdmin ? 
           <>
           <li><NavLink to="/dashboard"><FcHome></FcHome>Admin Home</NavLink></li>
-          <li><NavLink to="/"><SiGoogleclassroom></SiGoogleclassroom>Manage Classes</NavLink></li>
+          <li><NavLink to="/dashboard/admin/manage-classes"><SiGoogleclassroom></SiGoogleclassroom>Manage Classes</NavLink></li>
           <li><NavLink to="/dashboard/admin/manage-users"><FaBook></FaBook>Manage Users</NavLink></li>
           <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers>All Users</NavLink></li> 
          
