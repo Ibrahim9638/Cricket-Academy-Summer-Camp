@@ -4,10 +4,12 @@ import about2 from "../../assets/about/about2.jpg";
 
 const About = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 p-8 my-10 gap-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 p-8 my-10 gap-4" data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="2000">
       <div>
         <img
-          className="w-[460px]"
+          className="w-[460px]" 
           style={{ transform: "rotate(-10deg)", margin: "50px 0" }}
           src={about1}
           alt=""
@@ -62,7 +64,7 @@ const About = () => {
         </p>
         <button className="btn  btn-neutral text-white">About Us</button>
         <img
-          className="w-[460px] lg:ml-10 rounded"
+          className="w-[460px] lg:ml-10 rounded" 
           src={about2}
           style={{ transform: "rotate(-10deg)" }}
           alt=""

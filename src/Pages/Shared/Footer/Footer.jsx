@@ -5,8 +5,9 @@ import { AiFillInstagram } from 'react-icons/Ai';
 
 const Footer = () => {
     return (
-        <div>
-        <footer className="footer p-10 bg-[#92c6f3] bg-opacity-40 text-black text-lg" style={{ textShadow: "2px 2px 10px #000000" }}>
+        <div data-aos="fade-up"
+        data-aos-duration="2000">
+        <footer className="footer p-10 bg-[#197fd8] bg-opacity-40 text-white text-lg" style={{ textShadow: "2px 2px 10px #000000" }} >
           <div>
           <img style={{ width: "70px", height: "70px", borderRadius: "50%" }} src={logo} alt="" />
             <p className='text-md font-semibold'>
@@ -17,7 +18,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <span className="footer-title text-black">Contact</span>
+            <span className="footer-title text-white" style={{ textShadow: "2px 2px 10px #000000" }}>Contact</span>
             <div className="grid grid-flow-col gap-4">
               <div className='text-md font-semibold space-y-2'>
                 <div className='flex justify-center items-center'>
@@ -41,7 +42,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <span className="footer-title text-black">Social</span>
+            <span className="footer-title text-white" style={{ textShadow: "2px 2px 10px #000000" }}>Social</span>
             <div className="grid grid-flow-col gap-4 text-red-700">
               <a>
                 <svg
@@ -82,9 +83,10 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center p-4 bg-[#92c6f3] bg-opacity-40 text-black">
+        
+        <footer className="footer border-t-2 footer-center p-4 bg-[#197fd8] bg-opacity-40 text-white" style={{ textShadow: "2px 2px 10px #000000" }}>
           <div>
-            <p className='font-bold' style={{ textShadow: "2px 2px 10px #000000" }}>Copyright © 2023 - All right reserved by Roy Cricket Academy</p>
+            <p className='font-bold text-white'>Copyright © 2023 - All right reserved by Roy Cricket Academy</p>
           </div>
         </footer>
       </div>
