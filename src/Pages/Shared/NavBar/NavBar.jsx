@@ -6,7 +6,6 @@ import useAuth from "../../../Hooks/useAuth";
 const NavBar = () => {
   const {user, logOut} = useAuth();
 
-
   const handleLogOut =()=>{
     logOut()
     .then(()=>{})
@@ -50,10 +49,10 @@ const NavBar = () => {
           </Link>
          </li>
        
-        <li>
-          <img style={{width:'55px', height:'55px', borderRadius:'50%'}}
+        
+          <img style={{width:'50px', height:'50px', borderRadius:'50%', border:'1px solid'}}
             src={user?.photoURL} alt="" title={user?.displayName} />
-        </li>
+        
         <li>
           <p onClick={handleLogOut}  className="text-lg font-bold"
             style={{ textShadow: "2px 2px 4px #000000" }}>Logout</p>

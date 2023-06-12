@@ -43,11 +43,11 @@ const Register = () => {
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',
-                title: 'User updated successfully',
+                title: 'User Registration successfully',
                 showConfirmButton: false,
                 timer: 2500
               })
-              navigate('/');
+              navigate(from, { replace: true });
               }
             })
 

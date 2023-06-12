@@ -100,7 +100,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="uppercase text-[12px] btn-ghost btn-sm rounded-md bg-slate-500 text-white text-xl mr-4"
+                      className="uppercase text-[10px] btn-ghost btn-sm rounded-md bg-slate-500 text-white text-xl mr-4"
                     >
                       {" "}
                       Make-Admin
@@ -113,7 +113,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className="uppercase text-[12px]  btn-ghost btn-sm rounded-md bg-slate-700 text-white text-xl ml-2"
+                      className="uppercase text-[10px]  btn-ghost btn-sm rounded-md bg-slate-700 text-white text-xl ml-2"
                     >
                       {" "}
                       Make-Instructor

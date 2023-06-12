@@ -6,37 +6,64 @@ import { Navigate } from "react-router-dom";
 
 const AddClass = () => {
   const { user } = useAuth();
-  const {register,handleSubmit,formState: { errors }, reset} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    const saveUser = {className:data.className, InstructorName:data.InstructorName, InstructorEmail:data.InstructorEmail, image:data.image, price:data.price, seats:data.seats,}
 
-    fetch('http://localhost:5000/instructor',{
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(saveUser)
-    })
-    .then(res => res.json())
-    .then(data =>{
-      if(data.insertedId){
-    Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: 'Class Added successfully',
-        showConfirmButton: false,
-        timer: 2500
-      })
-      Navigate('/');
-      }
-    })
-  }
+    const imgbbURL = `https://api.imgbb.com/1/upload?key=950e67bbdcf40404a0597e09b2cf811d`;
+    let formData = new FormData();
+    formData.append("image", data.image[0]);
+
+    fetch(imgbbURL, { method: "POST", body: formData })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const updatedClass = {
+            image: result.data.display_url,
+            className: data.name,
+            InstructorName: data.InstructorName,
+            InstructorEmail: data.InstructorEmail,
+            price: parseFloat(data.price),
+            seats: parseInt(data.seats),
+            status: "Pending",
+            enrolledStudent: parseInt(0)
+          };
+          console.log(updatedClass)
+          fetch("http://localhost:5000/add-class", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(updatedClass),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: "Class Added successfully",
+                  showConfirmButton: false,
+                  timer: 2500,
+                });
+                Navigate(from, { replace: true });
+              }
+            });
+        }
+      });
+   
+  };
 
   return (
     <div className="w-full p-10">
-        <h1 className="text-center text-3xl text-purple-800 my-5 font-bold">Add Class</h1>
+      <h1 className="text-center text-3xl text-purple-800 my-5 font-bold">
+        Add Class
+      </h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="form-control">
@@ -47,7 +74,7 @@ const AddClass = () => {
               type="text"
               placeholder="Class Name"
               className="input input-bordered"
-              {...register("className", { required: true })}
+              {...register("name", { required: true })}
             />
           </div>
           <div className="form-control">
@@ -55,13 +82,12 @@ const AddClass = () => {
               <span className="label-text">Class Image</span>
             </label>
             <input
-              type="link"
+              type="file"
               placeholder="Class Image"
-              className="input input-bordered"
+              
               {...register("image", { required: true })}
             />
           </div>
-        
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -72,11 +98,10 @@ const AddClass = () => {
             <input
               type="text"
               placeholder="Instructor Name"
-              defaultValue={user?.displayName}
+              defaultValue={user?.displayName} readOnly
               className="input input-bordered"
               {...register("InstructorName", { required: true })}
             />
-
           </div>
           <div className="form-control">
             <label className="label">
@@ -85,7 +110,7 @@ const AddClass = () => {
             <input
               type="email"
               placeholder="Instructor Email"
-              defaultValue={user?.email}
+              defaultValue={user?.email} readOnly
               className="input input-bordered"
               {...register("InstructorEmail", { required: true })}
             />
