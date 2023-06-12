@@ -2,10 +2,10 @@ import React from "react";
 import useAuth from "../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { Navigate } from "react-router-dom";
 
 const AddClass = () => {
   const { user } = useAuth();
+  
   const {
     register,
     handleSubmit,
@@ -44,6 +44,7 @@ const AddClass = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
+                reset();
                 Swal.fire({
                   position: "top-center",
                   icon: "success",
@@ -51,7 +52,7 @@ const AddClass = () => {
                   showConfirmButton: false,
                   timer: 2500,
                 });
-                Navigate(from, { replace: true });
+                // Navigate(from, { replace: true });
               }
             });
         }

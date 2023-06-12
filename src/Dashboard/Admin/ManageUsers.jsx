@@ -79,7 +79,7 @@ const ManageUsers = () => {
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="bg-black text-white bg-opacity-60">
               <th>Serial</th>
               <th>Name</th>
               <th>Email</th>

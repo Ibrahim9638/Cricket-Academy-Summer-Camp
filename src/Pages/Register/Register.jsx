@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import logo from "../../assets/Login/login.jpg";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import { set, useForm } from "react-hook-form";
@@ -47,7 +47,7 @@ const Register = () => {
                 showConfirmButton: false,
                 timer: 2500
               })
-              navigate(from, { replace: true });
+              navigate('/');
               }
             })
 

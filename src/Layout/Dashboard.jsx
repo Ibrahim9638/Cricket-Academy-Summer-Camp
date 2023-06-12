@@ -39,7 +39,7 @@ const Dashboard = () => {
           <li><NavLink to="/dashboard"><FcHome></FcHome>Instructor Home</NavLink></li>
           <li><NavLink to="/dashboard/addClass"><SiGoogleclassroom></SiGoogleclassroom>Add Class</NavLink></li>
           <li><NavLink to="/dashboard/myClasses"><MdClass></MdClass>My Classes</NavLink></li>
-          <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers>All Users</NavLink></li> 
+          
           </>:
           
           <>
