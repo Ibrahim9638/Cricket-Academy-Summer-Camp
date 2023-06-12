@@ -7,9 +7,10 @@ import { AiOutlineMenu } from 'react-icons/Ai';
 import { MdClass } from 'react-icons/Md';
 import { SiGoogleclassroom } from 'react-icons/Si';
 
+
 const Dashboard = () => {
-  const isAdmin = true;
-  const isInstructor = false;
+  const isAdmin = false;
+  const isInstructor = true;
 
     return (
       <div className="drawer lg:drawer-open ">
@@ -32,10 +33,12 @@ const Dashboard = () => {
           <li><NavLink to="/"><SiGoogleclassroom></SiGoogleclassroom>Manage Classes</NavLink></li>
           <li><NavLink to="/dashboard/admin/manage-users"><FaBook></FaBook>Manage Users</NavLink></li>
           <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers>All Users</NavLink></li> 
+         
           </>: isInstructor ?  <>
+
           <li><NavLink to="/dashboard"><FcHome></FcHome>Instructor Home</NavLink></li>
-          <li><NavLink to="/"><SiGoogleclassroom></SiGoogleclassroom>Add Class</NavLink></li>
-          <li><NavLink to="/"><FaBook></FaBook>Manage Class</NavLink></li>
+          <li><NavLink to="/dashboard/addClass"><SiGoogleclassroom></SiGoogleclassroom>Add Class</NavLink></li>
+          <li><NavLink to="/dashboard/myClasses"><MdClass></MdClass>My Classes</NavLink></li>
           <li><NavLink to="/dashboard/allUsers"><FaUsers></FaUsers>All Users</NavLink></li> 
           </>:
           

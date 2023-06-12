@@ -11,6 +11,8 @@ import Instructor from "../Dashboard/Instructor/Instructor";
 import PopularInstructor from "../Pages/PopularInstructor/PopularInstructor.jsx";
 import AllUsers from "../Dashboard/AllUsers/AllUsers";
 import ManageUsers from "../Dashboard/Admin/ManageUsers";
+import AddClass from "../Dashboard/AddClass/AddClass";
+import MyClasses from "../Dashboard/MyClasses/MyClasses";
 
 
 
@@ -60,6 +62,14 @@ export const router = createBrowserRouter([
         {
           path:"/dashboard/admin/manage-users",
           element:<ManageUsers/>
+        },
+        {
+          path: 'addClass',
+          element:<AddClass></AddClass>
+        },
+        {
+          path: 'myClasses',
+          element:<MyClasses></MyClasses>
         }
       ]
     }
