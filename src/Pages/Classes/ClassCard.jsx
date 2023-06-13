@@ -9,7 +9,7 @@ import { TbCurrencyTaka } from "react-icons/Tb";
 import useAuth from "../../Hooks/useAuth";
 
 const ClassCard = ({ classInfo }) => {
-  const { _id, image, name, InstructorEmail, price, status, enrolledStudent } =
+  const { _id, image, InstructorEmail, price, status, enrolledStudent,className,seats } =
     classInfo;
   const [axiosSecure] = useAxiosSecure();
   const {user} = useAuth()
@@ -19,9 +19,10 @@ const ClassCard = ({ classInfo }) => {
         classId: _id,
         userEmail: user?.email,
         image,
-        name,
+        className,
         InstructorEmail,
         price,
+        seats,
         status,
         enrolledStudent,
       })
@@ -34,7 +35,7 @@ const ClassCard = ({ classInfo }) => {
 
   return (
     <div>
-      <div className="card  bg-base-100 shadow-xl border h-[500px] ">
+      <div className="card bg-base-100 shadow-xl border h-[500px] ">
         <figure>
           <img src={classInfo.image} className="h-full w-full"  alt="Shoes" />
         </figure>

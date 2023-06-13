@@ -23,9 +23,50 @@ const SelectedClasses = () => {
           </Link>
         </p>
       </div>
-    {users.length}
+      
+      <table className="table">
+          {/* head */}
+          <thead>
+            <tr className="bg-slate-500 text-white font-bold text-lg">
+              <th></th>
+              <th>Image</th>
+              <th>Class Name</th>
+              <th>Available Seats</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+                users.map((selectClass, index) => <tr key={selectClass._id}>
+                <th>{index +1}</th>
+                <td>
+                 
+                <div className="flex items-center space-x-3">
+            <div className="avatar">
+              <div className="mask mask-squircle w-12 h-12">
+                <img src={selectClass.image} alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            </div>
+          
+                 
+                </td>
+                <td>{selectClass.className}</td>
+                <td>{selectClass.enrolledStudent}</td>
+                <td>{selectClass.price}/- Taka</td>
+                <td>
+                    <button className="btn btn-accent">Remove</button>
+                </td>
+              </tr>)
+            }
+            
+         
+          </tbody>
+        </table>
+      </div>
 
-    </div>
+   
   );
 };
 

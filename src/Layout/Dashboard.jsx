@@ -56,7 +56,7 @@ const Dashboard = () => {
           <li><NavLink to="/"><FcHome></FcHome>Student Home</NavLink></li>
           <li><NavLink to="/dashboard/student/selected-classes"><SlCalender></SlCalender>My Selected Classes</NavLink></li>
           <li><NavLink to="/"><GiClassicalKnowledge></GiClassicalKnowledge>My Enrolled Classes</NavLink></li>
-          <li><NavLink to="/"><FaWallet></FaWallet>Payment History</NavLink></li>
+          <li><NavLink to="/dashboard/student/paymentHistory"><FaWallet></FaWallet>Payment History</NavLink></li>
          
           </>
         }

@@ -45,7 +45,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/popular-instructor"
+          to="/instructors"
           className="text-lg font-bold"
           style={{ textShadow: "2px 2px 4px #000000" }}
         >
