@@ -14,6 +14,8 @@ import ManageUsers from "../Dashboard/Admin/ManageUsers";
 import AddClass from "../Dashboard/AddClass/AddClass";
 import MyClasses from "../Dashboard/MyClasses/MyClasses";
 import ManageClass from "../Dashboard/ManageClass/ManageClass";
+import SelectedClasses from "../Dashboard/StudentDashboard/SelectedClasses";
+import Payment from "../Dashboard/Payment/Payment";
 
 
 
@@ -51,6 +53,13 @@ export const router = createBrowserRouter([
       path: '/dashboard',
       element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
       children: [
+        // student router 
+        {
+          path:"/dashboard/student/selected-classes",
+          element: <SelectedClasses/>
+        },
+        {path:'/dashboard/payment',
+      element: <Payment/>},
         {
           path:'instructor',
           element:<Instructor></Instructor>
@@ -68,6 +77,7 @@ export const router = createBrowserRouter([
           path:"/dashboard/admin/manage-classes",
           element:<ManageClass></ManageClass>
         },
+
         {
           path: 'addClass',
           element:<AddClass></AddClass>

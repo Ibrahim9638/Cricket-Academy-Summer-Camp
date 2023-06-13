@@ -103,7 +103,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="uppercase text-[10px] btn-ghost btn-sm rounded-md bg-slate-500 text-white text-xl mr-4"
+                      className="uppercase text-[10px] btn-ghost btn-sm rounded-md bg-primary text-white  mr-4"
                     >
                       {" "}
                       Make-Admin
@@ -116,7 +116,7 @@ const ManageUsers = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className="uppercase text-[10px]  btn-ghost btn-sm rounded-md bg-slate-700 text-white text-xl ml-2"
+                      className="uppercase text-[10px]  btn-ghost btn-sm rounded-md bg-orange-400 text-white ml-2"
                     >
                       {" "}
                       Make-Instructor
@@ -126,7 +126,7 @@ const ManageUsers = () => {
                 <td>
                   <button
                     onClick={() => handleDelete(user)}
-                    className=" btn-ghost btn-sm rounded-md bg-red-600 text-white text-xl"
+                    className=" btn-ghost btn-sm rounded-md bg-red-600 text-white"
                   >
                     {" "}
                     <AiFillDelete></AiFillDelete>
