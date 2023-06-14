@@ -34,7 +34,7 @@ const AddClass = () => {
             enrolledStudent: parseInt(0)
           };
           console.log(updatedClass)
-          fetch("http://localhost:5000/add-class", {
+          fetch("https://assignment-server-site-phi.vercel.app/add-class", {
             method: "POST",
             headers: {
               "content-type": "application/json",

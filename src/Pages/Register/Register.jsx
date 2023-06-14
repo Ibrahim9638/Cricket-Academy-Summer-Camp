@@ -17,6 +17,9 @@ const Register = () => {
 
   const { createUser, updateUserProfile } = useAuth();
   const onSubmit = (data) => {
+    if(data.confirmPassword !== data.password){
+      return alert("Passwords do not match")
+    }
     createUser(data.email, data.password, data.confirmPassword)
       .then((result) => {
         const loggedUser = result.user;
@@ -29,7 +32,7 @@ const Register = () => {
               return;
             }
             const saveUser = {name:data.name, email:data.email, photoUrl:data.photo, password:data.password}
-            fetch('http://localhost:5000/users',{
+            fetch('https://assignment-server-site-phi.vercel.app/users',{
               method: 'POST',
               headers: {
                 'content-type': 'application/json',

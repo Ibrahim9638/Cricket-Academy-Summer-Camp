@@ -2,10 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import ClassCard from "./ClassCard";
 import classBanner from "../../assets/class/classBanner.jpg";
+import useTitle from "../../Hooks/useTitle";
 
 const Classes = () => {
+  useTitle("Classes")
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/approved-classes");
+    const res = await fetch("https://assignment-server-site-phi.vercel.app/approved-classes");
     return res.json();
   });
 

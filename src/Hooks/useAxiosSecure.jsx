@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://assignment-server-site-phi.vercel.app",
 });
 const useAxiosSecure = () => {
   useEffect(() => {

@@ -10,10 +10,12 @@ import { BiLogOut } from 'react-icons/Bi';
 import { FcSettings } from 'react-icons/Fc';
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
+import useTitle from '../Hooks/useTitle';
 
 
 
 const Dashboard = () => {
+  useTitle("Dashboard");
   const [isAdmin] = useAdmin()
   const [isInstructor] = useInstructor()
  
@@ -53,9 +55,9 @@ const Dashboard = () => {
           
           <>
           {/* Sidebar content here */}
-          <li><NavLink to="/"><FcHome></FcHome>Student Home</NavLink></li>
+          <li><NavLink to="/dashboard/studentHome"><FcHome></FcHome>Student Home</NavLink></li>
           <li><NavLink to="/dashboard/student/selected-classes"><SlCalender></SlCalender>My Selected Classes</NavLink></li>
-          <li><NavLink to="/"><GiClassicalKnowledge></GiClassicalKnowledge>My Enrolled Classes</NavLink></li>
+          <li><NavLink to="/dashboard/enrolled-classes"><GiClassicalKnowledge></GiClassicalKnowledge>My Enrolled Classes</NavLink></li>
           <li><NavLink to="/dashboard/student/paymentHistory"><FaWallet></FaWallet>Payment History</NavLink></li>
          
           </>

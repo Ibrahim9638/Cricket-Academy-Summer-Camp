@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import useAuth from "../../Hooks/useAuth";
 
 const PaymentHistory = () => {
+  const {user} = useAuth()
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch(`http://localhost:5000/payment-history/${email}`);
+    const res = await fetch(`https://assignment-server-site-phi.vercel.app/dashboard/payment-history/${user?.email}`);
     return res.json();
   });
 
@@ -27,7 +29,7 @@ const PaymentHistory = () => {
                 <th>{index +1}</th>
                 <td>{payment.transactionId}</td>
                 <td>{payment.date}</td>
-                <td>{payment.price}</td>
+                <td>{payment.price}/- Taka</td>
               </tr>)
             }
             

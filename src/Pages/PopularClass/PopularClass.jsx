@@ -4,7 +4,7 @@ import PopularClassCard from "./PopularClassCard";
 
 const PopularClass = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/popular-classes");
+    const res = await fetch("https://assignment-server-site-phi.vercel.app/popular-classes");
     return res.json();
   });
 

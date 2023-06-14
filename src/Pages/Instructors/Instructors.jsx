@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import instructor from "../../assets/class/instructor.jpg";
+import useTitle from "../../Hooks/useTitle";
 
 const Instructors = () => {
+  useTitle('Instructor')
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users/instructors");
+    const res = await fetch("https://assignment-server-site-phi.vercel.app/users/instructors");
     return res.json();
   });
   

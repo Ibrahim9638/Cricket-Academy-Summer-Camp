@@ -1,21 +1,21 @@
 import React from "react";
-import useSelectedClasses from "../../Hooks/useSelectedClasses";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../Hooks/useAuth";
 
 const SelectedClasses = () => {
-  const [selectedClasses] = useSelectedClasses();
+  const {user}  = useAuth()
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/select-classes");
+    const res = await fetch(`https://assignment-server-site-phi.vercel.app/select-classes/${user?.email}`);
     return res.json();
   });
-
+ console.log(users.length);
   return (
     <div className="w-full ml-6">
       <div className="flex items-center">
         <p className="font-bold text-2xl mr-12">
-          Total Class: {selectedClasses.length}
+          Total Class: {users.length}
         </p>
         <p>
           <Link to={"/dashboard/payment"} className="btn btn-primary">
@@ -53,7 +53,7 @@ const SelectedClasses = () => {
                  
                 </td>
                 <td>{selectClass.className}</td>
-                <td>{selectClass.enrolledStudent}</td>
+                <td>{selectClass.seats}</td>
                 <td>{selectClass.price}/- Taka</td>
                 <td>
                     <button className="btn btn-accent">Remove</button>

@@ -8,12 +8,12 @@ const ManageClass = () => {
   useTitle("Manage-Class");
 
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/all-classes");
+    const res = await fetch("https://assignment-server-site-phi.vercel.app/all-classes");
     return res.json();
   });
 
   const handleApprove = (id)=>{
-    axios.patch(`http://localhost:5000/approve-class/${id}`, {status:"approved"})
+    axios.patch(`https://assignment-server-site-phi.vercel.app/approve-class/${id}`, {status:"approved"})
     .then(res=>{
       if(res.data.modifiedCount > 0){
         refetch()
@@ -26,7 +26,7 @@ const ManageClass = () => {
     })
   }
   const handleDeny = (id)=>{
-    axios.patch(`http://localhost:5000/denied-class/${id}`, {status:"denied"})
+    axios.patch(`https://assignment-server-site-phi.vercel.app/denied-class/${id}`, {status:"denied"})
     .then(res=>{
       if(res.data.modifiedCount > 0){
         refetch()
@@ -51,7 +51,7 @@ const ManageClass = () => {
     })
     
     if (text) {
-      axios.patch(`http://localhost:5000/feedback-class/${id}`, {feedback: text})
+      axios.patch(`https://assignment-server-site-phi.vercel.app/feedback-class/${id}`, {feedback: text})
       .then(res=>{
         if(res.data.modifiedCount > 0){
           refetch()
