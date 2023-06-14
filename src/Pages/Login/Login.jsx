@@ -60,7 +60,7 @@ const Login = () => {
                 type="email"
                 {...register("email")}
                 placeholder="Email"
-                className="input input-bordered"
+                className="input input-bordered border-gray-400"
               />
             </div>
             <div className="form-control">
@@ -71,7 +71,7 @@ const Login = () => {
                 type={show ? 'text' : 'password'}
                 {...register("password")}
                 placeholder="Password"
-                className="input input-bordered"
+                className="input input-bordered border-gray-400"
               />
               <p className='text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]' onClick={() => setShow(!show)}>
                 <small>

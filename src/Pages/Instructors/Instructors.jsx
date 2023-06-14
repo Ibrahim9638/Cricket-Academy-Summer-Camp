@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import instructor from "../../assets/class/instructor.jpg";
-import { FcLike } from "react-icons/Fc";
 
 const Instructors = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {

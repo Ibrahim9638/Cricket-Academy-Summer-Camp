@@ -73,7 +73,7 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  className="input input-bordered"
+                  className="input input-bordered border-gray-400"
                   placeholder="Name"
                   {...register("name", { required: true })}
                 />
@@ -89,7 +89,7 @@ const Register = () => {
                   type="link"
                   placeholder="Photo URL"
                   {...register("photo", { required: true })}
-                  className="input input-bordered"
+                  className="input input-bordered border-gray-400"
                 />
                 {errors.photo && (
                   <span className="text-red-600">
@@ -107,7 +107,7 @@ const Register = () => {
                   {...register("email", {
                     required: "Email Address is required",
                   })}
-                  className="input input-bordered"
+                  className="input input-bordered border-gray-400"
                 />
                 {errors.email && (
                   <span className="text-red-600">Email field is required</span>
@@ -125,7 +125,7 @@ const Register = () => {
                     minLength: 6,
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
-                  className="input input-bordered"
+                  className="input input-bordered border-gray-400"
                 />
                 <p className="text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]" onClick={()=>setShow(!show)}>
                   <small>
@@ -168,7 +168,7 @@ const Register = () => {
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                   })}
                   onChange={(e) =>setConfirmPassword(e.target.value)}
-                  className="input input-bordered"
+                  className="input input-bordered border-gray-400"
                 />
                       <p className="text-2xl absolute lg:mt-[50px] lg:ml-[290px] ml-[247px] mt-[50px]" onClick={()=>setConfirmShow(!confirmShow)}>
                   <small>

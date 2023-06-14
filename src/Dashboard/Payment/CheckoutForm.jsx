@@ -122,7 +122,7 @@ const [selectedClasses, refetch] = useSelectedClasses()
         </div>
       </form>
       {transactionId && (
-        <p className="text-green-600">
+        <p className="text-green-600 font-bold">
           Payment Successful <br /> Transaction Id: {transactionId}
         </p>
       )}

@@ -4,6 +4,7 @@ import Banner from '../Banner/Banner';
 import PopularClass from '../../PopularClass/PopularClass';
 import useTitle from '../../../Hooks/useTitle';
 import About from '../../About/About';
+import PopularInstructor from '../../PopularInstructor/PopularInstructor';
 
 
 const Home = () => {
@@ -11,8 +12,9 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <PopularClass></PopularClass>
             <About></About>
+            <PopularClass></PopularClass>
+            <PopularInstructor></PopularInstructor>
             
         </div>
     )

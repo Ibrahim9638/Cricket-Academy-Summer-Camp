@@ -1,42 +1,14 @@
-import React from "react";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import axios from "axios";
-import Swal from "sweetalert2";
-import { AiOutlineShoppingCart } from "react-icons/Ai";
-import { BsPeopleFill } from "react-icons/Bs";
-import { MdEventSeat } from "react-icons/Md";
-import { TbCurrencyTaka } from "react-icons/Tb";
-import useAuth from "../../Hooks/useAuth";
-import { GiDuration } from "react-icons/Gi";
+import React from 'react';
+import { AiOutlineShoppingCart } from 'react-icons/Ai';
+import { BsPeopleFill } from 'react-icons/Bs';
+import { MdEventSeat } from 'react-icons/Md';
+import { TbCurrencyTaka } from 'react-icons/Tb';
 
-const ClassCard = ({ classInfo }) => {
-  const { _id, image, InstructorEmail, price, status, enrolledStudent,className,seats } =
+const PopularClassCard = ({classInfo}) => {
+    const { _id, image, InstructorEmail, price, status, enrolledStudent,className,seats } =
     classInfo;
-  const [axiosSecure] = useAxiosSecure();
-  const {user} = useAuth()
-  const handleSelectClass = () => {
-    axiosSecure
-      .post("/select-classes", {
-        classId: _id,
-        userEmail: user?.email,
-        image,
-        className,
-        InstructorEmail,
-        price,
-        seats,
-        status,
-        enrolledStudent,
-      })
-      .then((res) => {
-        if (res.data.insertedId) {
-          Swal.fire("Good job!", "You clicked the button!", "success");
-        }
-      });
-  };
-
-  return (
-    <div>
-      <div className="card bg-base-100 shadow-xl border h-[530px] ">
+    return (
+        <div className="card bg-base-100 shadow-xl border h-[500px] ">
         <figure>
           <img src={classInfo.image} className="h-full w-full"  alt="Shoes" />
         </figure>
@@ -70,20 +42,11 @@ const ClassCard = ({ classInfo }) => {
             </span>
           </div>
 
-          <div className="flex items-center">
-            <i>
-              <GiDuration></GiDuration>
-            </i>
-            <span className="text-md ml-2 font-semibold">
-              Duration: 6 Month
-            </span>
-          </div>
-
           <p >Cricket is played between two teams, each consisting of eleven players.</p>
           <p className="font-bold">Instructor: {classInfo.InstructorName}</p>
           <div className="card-actions justify-end mt-2">
             <button
-              onClick={handleSelectClass}
+              
               className="btn btn-primary border-0 border-b-4 border-red-600 "
             >
               <AiOutlineShoppingCart className="text-lg"></AiOutlineShoppingCart>{" "}
@@ -92,8 +55,7 @@ const ClassCard = ({ classInfo }) => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
 };
 
-export default ClassCard;
+export default PopularClassCard;
